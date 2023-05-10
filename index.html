@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Matrix Operations</title>
+	<style type="text/css">
+		table, th, td {
+			border: 1px solid black;
+			border-collapse: collapse;
+			padding: 5px;
+		}
+	</style>
+    <link rel="stylesheet" type="text/css" href="style.css">
+</head>
+<body>
+	<h1>Matrix Operations</h1>
+	<p>Please enter the values for the two 3x3 matrices:</p>
+	<table>
+		<tr>
+			<td><input type="text" id="a11"></td>
+			<td><input type="text" id="a12"></td>
+			<td><input type="text" id="a13"></td>
+		</tr>
+		<tr>
+			<td><input type="text" id="a21"></td>
+			<td><input type="text" id="a22"></td>
+			<td><input type="text" id="a23"></td>
+		</tr>
+		<tr>
+			<td><input type="text" id="a31"></td>
+			<td><input type="text" id="a32"></td>
+			<td><input type="text" id="a33"></td>
+		</tr>
+	</table>
+	<p>+</p>
+	<table>
+		<tr>
+			<td><input type="text" id="b11"></td>
+			<td><input type="text" id="b12"></td>
+			<td><input type="text" id="b13"></td>
+		</tr>
+		<tr>
+			<td><input type="text" id="b21"></td>
+			<td><input type="text" id="b22"></td>
+			<td><input type="text" id="b23"></td>
+		</tr>
+		<tr>
+			<td><input type="text" id="b31"></td>
+			<td><input type="text" id="b32"></td>
+			<td><input type="text" id="b33"></td>
+		</tr>
+	</table>
+	<button onclick="calculate()">Calculate</button>
+	<br><br>
+	<h2>Result:</h2>
+	<table id="result"></table>
+	
+	<script type="text/javascript">
+		function calculate() {
+			// Get values from input fields
+			var a11 = parseFloat(document.getElementById("a11").value);
+			var a12 = parseFloat(document.getElementById("a12").value);
+			var a13 = parseFloat(document.getElementById("a13").value);
+			var a21 = parseFloat(document.getElementById("a21").value);
+			var a22 = parseFloat(document.getElementById("a22").value);
+			var a23 = parseFloat(document.getElementById("a23").value);
+			var a31 = parseFloat(document.getElementById("a31").value);
+			var a32 = parseFloat(document.getElementById("a32").value);
+			var a33 = parseFloat(document.getElementById("a33").value);
+			var b11 = parseFloat(document.getElementById("b11").value);
+			var b12 = parseFloat(document.getElementById("b12").value);
+			var b13 = parseFloat(document.getElementById("b13").value);
+			var b21 = parseFloat(document.getElementById("b21").value);
+			var b22 = parseFloat(document.getElementById("b22").value);
+			var b23 = parseFloat(document.getElementById("b23").value);
+            var b31 = parseFloat(document.getElementById("b31").value);
+			var b32 = parseFloat(document.getElementById("b32").value);
+			var b33 = parseFloat(document.getElementById("b33").value);
+
+			// Calculate matrix operations
+			var sum = [[a11 + b11, a12 + b12, a13 + b13],
+			           [a21 + b21, a22 + b22, a23 + b23],
+			           [a31 + b31, a32 + b32, a33 + b33]];
+
+			var sub = [[a11 - b11, a12 - b12, a13 - b13],
+			           [a21 - b21, a22 - b22, a23 - b23],
+			           [a31 - b31, a32 - b32, a33 - b33]];
+
+			var mul = [[a11*b11 + a12*b21 + a13*b31, a11*b12 + a12*b22 + a13*b32, a11*b13 + a12*b23 + a13*b33],
+			           [a21*b11 + a22*b21 + a23*b31, a21*b12 + a22*b22 + a23*b32, a21*b13 + a22*b23 + a23*b33],
+			           [a31*b11 + a32*b21 + a33*b31, a31*b12 + a32*b22 + a33*b32, a31*b13 + a32*b23 + a33*b33]];
+
+			// Display result in a table
+			var resultTable = document.getElementById("result");
+			resultTable.innerHTML = "<tr><th>Operation</th><th>Result</th></tr>"
+			                      + "<tr><td>Sum</td><td>" + formatMatrix(sum) + "</td></tr>"
+			                      + "<tr><td>Subtraction</td><td>" + formatMatrix(sub) + "</td></tr>"
+			                      + "<tr><td>Multiplication</td><td>" + formatMatrix(mul) + "</td></tr>";
+		}
+
+		function formatMatrix(matrix) {
+			// Format matrix as a string with HTML table tags
+			var str = "<table>";
+			for (var i = 0; i < matrix.length; i++) {
+				str += "<tr>";
+				for (var j = 0; j < matrix[i].length; j++) {
+					str += "<td>" + matrix[i][j] + "</td>";
+				}
+				str += "</tr>";
+			}
+			str += "</table>";
+			return str;
+		}
+	</script>
+</body>
+</html>
+
+
+
+            
